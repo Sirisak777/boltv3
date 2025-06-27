@@ -21,9 +21,8 @@ const usersFile = path.join(__dirname, 'users.json');
 const clientBuildPath = path.join(__dirname, '../dist'); // เปลี่ยนเป็น ../client/build ถ้าใช้ CRA
 app.use(express.static(clientBuildPath));
 
-function loadUsers() {
-  if (!fs.existsSync(usersFile)) return [];
-  return JSON.parse(fs.readFileSync(usersFile));
+if (!fs.existsSync(usersFile)) {
+  fs.writeFileSync(usersFile, '[]');
 }
 
 function saveUsers(users) {
