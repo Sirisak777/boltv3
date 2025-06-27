@@ -7,7 +7,7 @@ import { fileURLToPath } from 'url';
 import path from 'path';
 
 const app = express();
-const PORT = 5000;
+const PORT = process.env.PORT || 5000;
 
 app.use(cors());
 app.use(bodyParser.json());
@@ -16,6 +16,10 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 const usersFile = path.join(__dirname, 'users.json');
+
+// 🚀 เสิร์ฟ React frontend build
+const clientBuildPath = path.join(__dirname, '../client/dist'); // เปลี่ยนเป็น ../client/build ถ้าใช้ CRA
+app.use(express.static(clientBuildPath));
 
 function loadUsers() {
   if (!fs.existsSync(usersFile)) return [];
@@ -26,6 +30,7 @@ function saveUsers(users) {
   fs.writeFileSync(usersFile, JSON.stringify(users, null, 2));
 }
 
+// 📦 API routes
 app.post('/register', (req, res) => {
   const { email, password, shopName, name } = req.body;
   const users = loadUsers();
@@ -59,7 +64,6 @@ app.post('/login', (req, res) => {
     return res.status(401).json({ message: 'Invalid credentials' });
   }
 
-  // ✅ ส่งข้อมูลครบถ้วนกลับไป
   const { password: _, ...userWithoutPassword } = user;
   res.json({ message: 'Login successful', user: userWithoutPassword });
 });
@@ -105,10 +109,12 @@ app.post('/update-profile', (req, res) => {
   res.json({ message: 'Profile updated successfully', user: userWithoutPassword });
 });
 
-app.get('/', (req, res) => {
-  res.send('API is running...');
+// ✅ สำหรับทุก route ที่ไม่ใช่ API —> เสิร์ฟ index.html
+app.get('*', (req, res) => {
+  res.sendFile(path.join(clientBuildPath, 'index.html'));
 });
 
+// ✅ Start server
 app.listen(PORT, () => {
   console.log(`Server running on http://localhost:${PORT}`);
 });
