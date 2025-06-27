@@ -1,0 +1,37 @@
+[
+  {
+    "id": 1750676760309,
+    "email": "coolman@gmail.com",
+    "password": "555555",
+    "shopName": "G Store",
+    "name": "Crazy Man"
+  },
+  {
+    "id": 1,
+    "email": "demo@bakery.com",
+    "password": "demo123",
+    "shopName": "Test Bakery",
+    "name": "Demo User"
+  },
+  {
+    "id": 1750827074460,
+    "email": "sirisak.kong@bumail.net",
+    "password": "222222",
+    "shopName": "ออมสิน04",
+    "name": "ออมสิน"
+  },
+  {
+    "id": 1750842006650,
+    "email": "1234@gmail.com",
+    "password": "888888",
+    "shopName": "111",
+    "name": "test111"
+  },
+  {
+    "id": 1750946477217,
+    "email": "test@gmail.com",
+    "password": "777777",
+    "shopName": "Test02",
+    "name": "test333"
+  }
+]

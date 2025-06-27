@@ -1,0 +1,39 @@
+@import url('https://fonts.googleapis.com/css2?family=Pacifico&family=Sarabun:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cookie&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Mali&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Anuphan&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer utilities {
+  @keyframes crumbFall {
+    0% { transform: translateY(-50px) rotate(0deg); opacity: 0; }
+    30% { opacity: 1; }
+    100% { transform: translateY(100vh) rotate(360deg); opacity: 0; }
+  }
+
+  .crumb {
+    position: absolute;
+    width: 8px;
+    height: 8px;
+    background-color: #facc15;
+    border-radius: 9999px;
+    opacity: 0;
+    animation: crumbFall 5s linear infinite;
+  }
+
+}
+
+@keyframes bounceSoft {
+  0%   { transform: translateY(0); }
+  30%  { transform: translateY(-6px); }
+  60%  { transform: translateY(3px); }
+  100% { transform: translateY(0); }
+}
+
+.animate-bounce-soft {
+  animation: bounceSoft 0.6s ease;
+}

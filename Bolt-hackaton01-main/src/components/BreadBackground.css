@@ -1,0 +1,13 @@
+.bread-slideshow {
+  background-size: cover;
+  background-position: center;
+  animation: breadSlide 30s infinite;
+}
+
+@keyframes breadSlide {
+  0%   { background-image: url('/bread1.jpg'); }
+  25%  { background-image: url('/bread2.jpg'); }
+  50%  { background-image: url('/bread3.jpg'); }
+  75%  { background-image: url('/bread4.jpg'); }
+  100% { background-image: url('/bread1.jpg'); }
+}
