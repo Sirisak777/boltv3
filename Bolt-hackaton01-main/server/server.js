@@ -56,14 +56,18 @@ app.post('/register', (req, res) => {
 
 app.post('/login', (req, res) => {
   const { email, password } = req.body;
-  const users = loadUsers();
+  console.log('Login attempt:', email, password);
 
+  const users = loadUsers();
   const user = users.find(u => u.email === email && u.password === password);
+
   if (!user) {
+    console.log('Login failed for:', email);
     return res.status(401).json({ message: 'Invalid credentials' });
   }
 
   const { password: _, ...userWithoutPassword } = user;
+  console.log('Login success:', userWithoutPassword);
   res.json({ message: 'Login successful', user: userWithoutPassword });
 });
 
