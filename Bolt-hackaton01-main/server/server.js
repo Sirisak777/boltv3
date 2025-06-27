@@ -18,7 +18,7 @@ const __dirname = path.dirname(__filename);
 const usersFile = path.join(__dirname, 'users.json');
 
 // 🚀 เสิร์ฟ React frontend build
-const clientBuildPath = path.join(__dirname, '../client/dist'); // เปลี่ยนเป็น ../client/build ถ้าใช้ CRA
+const clientBuildPath = path.join(__dirname, '../dist'); // เปลี่ยนเป็น ../client/build ถ้าใช้ CRA
 app.use(express.static(clientBuildPath));
 
 function loadUsers() {
